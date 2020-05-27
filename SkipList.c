@@ -146,10 +146,21 @@ void jakaWysokosc(SkipList* list, int max_h){
         printf("Elementow wysokosci %d jest %d\n",i+1,wysokosc[i]);
     }
 }
+unsigned long int random_number(){
+    unsigned long int r;
+    unsigned long int wynik;
+    r = rand()%5 +1;
+    if(r == 1) wynik = rand() * r /2;
+    else if(r==2) wynik = rand() / r ;
+    else if(r==3) wynik = rand() + r;
+    else if(r==4) wynik = rand() -r;
+    else wynik = rand() * log(rand());
 
+    return wynik;
+}
 int main(int argc, char** argv) {
     srand(time(NULL));
-    for(unsigned long int i = 10000; i<=300000;i+=10000){
+    for(unsigned long int i = 10000; i<=30000;i+=10000){
         unsigned long int ile_danych = i;
         unsigned long int ile = 3*ile_danych;
         int Z = 100;
@@ -163,7 +174,7 @@ int main(int argc, char** argv) {
         FILE * pHandle = fopen("dane.txt","w+");
         FILE * zapis = fopen("wyniki.txt", "w+");
         for(unsigned long int i=0; i<ile;i++){
-            fprintf (pHandle, "%lu\n", rand());
+            fprintf (pHandle, "%lu\n", random_number());
         }
 
         for (int i=0; i<Z; i++) {
@@ -231,7 +242,7 @@ int main(int argc, char** argv) {
         double wynik3 = 0;
         int s, b, c;
         FILE * plik = fopen("wyniki.txt","r");
-        for(int i=0;i<100;i++){
+        for(int i=0;i<Z;i++){
             fscanf(plik,"%d", &s);
             wynik1 +=s;
             fscanf(plik,"%d", &b);
@@ -242,9 +253,9 @@ int main(int argc, char** argv) {
         FILE * czasy_insert = fopen("czasInsert.txt","a");
         FILE * czasy_remove = fopen("czasRemove.txt","a");
         FILE * czasy_find = fopen("czasFind.txt","a");
-        wynik1 = wynik1 /100.0;
-        wynik2 = wynik2 /100.0;
-        wynik3 = wynik3 /100.0;
+        wynik1 = wynik1 /(double)Z;
+        wynik2 = wynik2 /(double)Z;
+        wynik3 = wynik3 /(double)Z;
         fprintf (czasy_insert, "%f\n",wynik1);
         fprintf (czasy_remove, "%f\n",wynik2);
         fprintf (czasy_find, "%f\n",wynik3);
