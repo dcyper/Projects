@@ -160,7 +160,7 @@ unsigned long int random_number(){
 }
 int main(int argc, char** argv) {
     srand(time(NULL));
-    for(unsigned long int i = 10000; i<=30000;i+=10000){
+    for(unsigned long int i = 10000; i<=300000;i+=10000){
         unsigned long int ile_danych = i;
         unsigned long int ile = 3*ile_danych;
         int Z = 100;
