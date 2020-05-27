@@ -17,7 +17,9 @@ typedef struct SkipList {
 
 int getHeight(int max_h) {
     int h = 1;
-    while (h < max_h && rand() < RAND_MAX / 2) h++;
+    float p = 0.5;
+    while (h < max_h && rand() / (RAND_MAX + 1.) < p) 
+        h++;
     return h;
 }
 
