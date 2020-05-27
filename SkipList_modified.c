@@ -162,7 +162,7 @@ int main(int argc, char** argv) {
         int h = (int)log(ile);
         unsigned long int a=ile_danych, r=ile_danych, f=ile_danych;
 
-        FILE * pHandle = fopen("dane.txt","w+");
+        FILE * pHandle = fopen("dane.txt","r");
         FILE * zapis = fopen("wyniki.txt", "w+");
 
         for (int i=0; i<Z; i++) {
