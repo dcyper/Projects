@@ -146,18 +146,7 @@ void jakaWysokosc(SkipList* list, int max_h){
         printf("Elementow wysokosci %d jest %d\n",i+1,wysokosc[i]);
     }
 }
-unsigned long int random_number(){
-    unsigned long int r;
-    unsigned long int wynik;
-    r = rand()%5 +1;
-    if(r == 1) wynik = rand() * r /2;
-    else if(r==2) wynik = rand() / r ;
-    else if(r==3) wynik = rand() + r;
-    else if(r==4) wynik = rand() -r;
-    else wynik = rand() * log(rand());
 
-    return wynik;
-}
 int main(int argc, char** argv) {
     srand(time(NULL));
     for(unsigned long int i = 10000; i<=300000;i+=10000){
@@ -174,7 +163,7 @@ int main(int argc, char** argv) {
         FILE * pHandle = fopen("dane.txt","w+");
         FILE * zapis = fopen("wyniki.txt", "w+");
         for(unsigned long int i=0; i<ile;i++){
-            fprintf (pHandle, "%lu\n", random_number());
+            fprintf (pHandle, "%lu\n", rand());
         }
 
         for (int i=0; i<Z; i++) {
